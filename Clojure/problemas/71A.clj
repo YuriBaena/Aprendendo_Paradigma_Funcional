@@ -1,3 +1,5 @@
+;; link: https://codeforces.com/problemset/problem/71/A
+
 ;; Problema: Recebo um número (x) e depois desse
 ;; 	recebo x palavras, das quais todas que tiverem mais
 ;;  de 10 letras temos que abreviar
