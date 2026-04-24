@@ -3,16 +3,17 @@
 
 ;; --- A MACRO ---
 (defmacro enquanto-maior
-  [v-ref passo]
-  `(let [contador-local# (atom 0)]
-     (while (>= @~v-ref ~passo)
-       (swap! ~v-ref - ~passo) ; (v-ref = v-ref - passos) ou (distancia -= passo)
-       (swap! contador-local# inc)) ; (contador-local = contador-local + 1) ou (contador++)
-     @contador-local#)) ;; Retorna apenas o que contou NESTA execução
+  [v-ref passo passos-total]
+  `(while (>= @~v-ref ~passo)
+      (swap! ~v-ref - ~passo) ; (v-ref = v-ref - passos) ou (distancia -= passo)
+      (swap! ~passos-total inc) ; (contador-local = contador-local + 1) ou (contador++)
+   )
+)
 
 ;; OBS1: o # é para criar um nome exclusivo que nao afete no programa principal
 ;; OBS2: o ~ é para avaliar uma expressão dentro do template da macro, injetando o valor real no lugar do símbolo
 ;; OBS3: o ` é para não executar no momento que ler
+;; OBS4: o @ é para pegar o valor do atom
 
 ;; --- RESOLUÇÃO ---
 
